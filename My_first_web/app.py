@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from fake_db import users
 
 app = Flask(__name__)
 
@@ -15,6 +16,9 @@ def about():
 def contact():
     return render_template("/pages/contact.html")
 
+@app.route("/users")
+def users_list():
+    return render_template("/pages/users_list.html", users=users)
 
 @app.route("/calc/<int:a>/<int:b>")
 def calculator(a, b):
